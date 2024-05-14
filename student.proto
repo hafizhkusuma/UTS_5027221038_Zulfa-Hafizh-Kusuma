@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+service StudentService {
+    rpc AddPoint(AddPointRequest) returns (AddPointResponse);
+    rpc GetPoint(GetPointRequest) returns (GetPointResponse);
+    rpc UpdatePoint(UpdatePointRequest) returns (UpdatePointResponse);
+    rpc DeletePoint(DeletePointRequest) returns (DeletePointResponse);
+    rpc GetAllPoints(GetAllPointsRequest) returns (stream GetAllPointsResponse);
+}
+
+message AddPointRequest {
+    string student_id = 1;
+    int32 points = 2;
+}
+
+message AddPointResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message GetPointRequest {
+    string student_id = 1;
+}
+
+message GetPointResponse {
+    int32 points = 1;
+}
+
+message UpdatePointRequest {
+    string student_id = 1;
+    int32 points = 2;
+}
+
+message UpdatePointResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message DeletePointRequest {
+    string student_id = 1;
+}
+
+message DeletePointResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message GetAllPointsRequest {}
+
+message GetAllPointsResponse {
+    string student_id = 1;
+    int32 points = 2;
+}
